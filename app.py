@@ -1,3 +1,6 @@
+
+from dotenv import load_dotenv
+load_dotenv()
 import streamlit as st
 from utils import load_documents
 from agent import build_agent
@@ -44,8 +47,8 @@ st.header("⚡ Compare Low-Carbon Alternatives")
 
 with st.form("low_carbon_form"):
     current_emissions = st.number_input("Current Emissions (tons/day)", min_value=0.0)
-    hydrogen_share = st.slider("Hydrogen Share (%)", 0.0, 1.0, 0.3)
-    ccus_rate = st.slider("CCUS Capture Rate (%)", 0.0, 1.0, 0.5)
+    hydrogen_share = st.slider("Hydrogen Share (%)", 0.0, 1.0, 0.3, step=0.01)
+    ccus_rate = st.slider("CCUS Capture Rate (%)", 0.0, 1.0, 0.5, step=0.01)
     submitted = st.form_submit_button("Compare")
 
     if submitted:
